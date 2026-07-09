@@ -9,6 +9,12 @@ body {
   }
 }
 
+header{
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+
 main {
   min-height: 120dvh;
   padding-block: 3rem;
@@ -36,11 +42,11 @@ hgroup:has(.section-heading){
 }
 
 .section-heading {
-  line-height: 1;
+  line-height: 1.5;
 }
 .section-heading--sub{
   font-size: 0.6em;
-  line-height: 1;
+  line-height: 1.5;
   &::before,&::after{
     content: ' - '
   }
