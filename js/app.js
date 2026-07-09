@@ -8,6 +8,7 @@ createApp({
 
     // dataがなくなってref()になる。
     const isNavOpen = ref(false); // メニュー開閉状態管理用
+    const pages = ref([]);
     const navDialog = ref(null); // DOMを直接操作する用($refsの代わり)
 
     // watchはメソッドに変更。複数の状態を監視する場合はwatch自体を複数記述するなど。
@@ -25,9 +26,22 @@ createApp({
       console.log(navDialog.value);
     });
 
+    // fetchはonMountedでする。
+    onMounted(async () => {
+      try {
+        const response = await fetch('./data/site.json');
+        if (!response.ok) throw new Error('サイトデータの取得に失敗しました。');
+        const json = await response.json();
+        pages.value = json.pages;
+      } catch (e) {
+        console.error(e);
+      }
+    });
+
     // テンプレートで扱うものはreturnしないと使えない
     return {
       isNavOpen,
+      pages,
       navDialog
     }
   },

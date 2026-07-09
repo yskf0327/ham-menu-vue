@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>drawer menu by dialog element</title>
+  <title>dialog要素を用いたハンバーガーメニュー</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <!-- Vue3 Global Build -->
@@ -26,9 +26,7 @@
             </header>
             <nav>
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li v-for="link in pages" :key="link.name"><a :href="link.path">{{link.name}}</a></li>
               </ul>
             </nav>
           </div>

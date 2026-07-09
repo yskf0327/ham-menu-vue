@@ -1,0 +1,19 @@
+{
+  "site": {
+    "title": "dialog要素を用いたハンバーガーメニュー"
+  },
+  "pages": [
+    {
+      "name": "Home",
+      "path": "./"
+    },
+    {
+      "name": "About",
+      "path": "#"
+    },
+    {
+      "name": "Contact",
+      "path": "#"
+    }
+  ]
+}
