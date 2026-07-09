@@ -1,6 +1,7 @@
 {
   "site": {
-    "title": "dialog要素を用いたハンバーガーメニュー"
+    "title": "dialog要素を用いたハンバーガーメニュー",
+    "subtitle":"Vue3 CompositionAPI (CDN版)"
   },
   "pages": [
     {

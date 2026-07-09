@@ -8,6 +8,7 @@ createApp({
 
     // dataがなくなってref()になる。
     const isNavOpen = ref(false); // メニュー開閉状態管理用
+    const site = ref({});
     const pages = ref([]);
     const navDialog = ref(null); // DOMを直接操作する用($refsの代わり)
 
@@ -33,6 +34,7 @@ createApp({
         if (!response.ok) throw new Error('サイトデータの取得に失敗しました。');
         const json = await response.json();
         pages.value = json.pages;
+        site.value = json.site;
       } catch (e) {
         console.error(e);
       }
@@ -41,6 +43,7 @@ createApp({
     // テンプレートで扱うものはreturnしないと使えない
     return {
       isNavOpen,
+      site,
       pages,
       navDialog
     }
