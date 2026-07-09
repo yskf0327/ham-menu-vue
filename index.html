@@ -13,31 +13,7 @@
 
 <body>
   <div id="app">
-    <header>
-      <div class="header-inner container">
-        <h1 class="logo">LOGO</h1>
-        <dialog id="nav-dialog" class="drawer-menu" ref="navDialog" @close="isNavOpen = false">
-          <div class="drawer-menu__content container">
-            <header class="drawer-menu__header">
-              <button class="drawer-menu__btn-close" type="button" aria-label="閉じる" aria-controls="nav-dialog"
-                @click="isNavOpen=false">
-                <span class="btn-close__line"></span>
-              </button>
-            </header>
-            <nav>
-              <ul>
-                <!-- ディレクティブやマスタッシュはVue2と同じ -->
-                <li v-for="link in pages" :key="link.name"><a :href="link.path">{{link.name}}</a></li>
-              </ul>
-            </nav>
-          </div>
-        </dialog>
-        <button type="button" class="ham-btn" aria-label="メニュー開閉" aria-controls="nav-dialog"
-          @click="isNavOpen = !isNavOpen">
-          <span class="ham-btn__line"></span>
-        </button>
-      </div>
-    </header>
+    <site-header :pages="pages" v-model:is-nav-open="isNavOpen"></site-header>
     <main>
       <section>
         <div class="container">
@@ -59,6 +35,7 @@
       </div>
     </footer>
   </div>
+  <script src="./js/components/SiteHeader.js"></script>
   <script src="./js/app.js"></script>
 </body>
 
