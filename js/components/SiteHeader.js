@@ -1,3 +1,5 @@
+// コンポーネントは別ファイルにできる。
+// ルートの前で読み込むこと。
 const SiteHeader = {
   props: {
     pages: {
