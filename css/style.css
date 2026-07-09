@@ -11,6 +11,7 @@ body {
 
 main {
   min-height: 120dvh;
+  padding-block: 3rem;
 }
 
 .container {
@@ -24,11 +25,24 @@ main {
   line-height: 0;
 }
 
-.section-heading {
+hgroup:has(.section-heading){
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &+*{
+    margin-block-start: 2rem;
+  }
+}
 
-  &+* {
-    margin-block-start: 1.5rem;
+.section-heading {
+  line-height: 1;
+}
+.section-heading--sub{
+  font-size: 0.6em;
+  line-height: 1;
+  &::before,&::after{
+    content: ' - '
   }
 }
 
