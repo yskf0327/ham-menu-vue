@@ -1,26 +1,25 @@
-const { createApp } = Vue;
+const { createApp, ref, watch, onMounted, nextTick } = Vue;
 
 createApp({
-  data() {
-    return {
-      isNavOpen: false,
-    }
-  },
-  watch: {
-    isNavOpen(val) {
-      console.log(this.$refs['nav-dialog']);
-      this.$nextTick(() => {
-        const dialog = this.$refs['nav-dialog'];
-        if (val) {
-          dialog.showModal();
-        } else {
-          dialog.close();
-        }
-      });
+  setup() {
+    const isNavOpen = ref(false);
+    const navDialog = ref(null);
 
+    watch(isNavOpen, (val) => {
+      nextTick(() => {
+        const dialog = navDialog.value;
+        if (!dialog) return;
+        val ? dialog.showModal() : dialog.close()
+      })
+    });
+
+    onMounted(() => {
+      console.log(navDialog.value);
+    });
+
+    return {
+      isNavOpen,
+      navDialog
     }
   },
-  mounted() {
-    console.log(this.$refs['nav-dialog'])
-  }
 }).mount('#app')
