@@ -9,9 +9,9 @@ createApp({
     // dataがなくなってref()になる。
     const isNavOpen = ref(false); // メニュー開閉状態管理用
     const pages = ref([]);
-    const navDialog = ref(null); // DOMを直接操作する用($refsの代わり)
+    const navDialog = ref(null); // DOMを直接操作する用($refsの代わり)。テンプレートが描画されると自動的に代入される
 
-    // watchはメソッドに変更。複数の状態を監視する場合はwatch自体を複数記述するなど。
+    // watchはメソッドに変更。複数の状態を監視する場合はwatch自体を複数記述する、監視対象を配列にするなど。
     watch(isNavOpen, (val) => {
       nextTick(() => {
         const dialog = navDialog.value;
