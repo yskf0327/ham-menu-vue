@@ -9,20 +9,27 @@ const SiteHeader = {
       default: false,
     }
   },
+  // 使用するイベントは事前に登録する
   emits: ['update:isNavOpen'],
-  setup(props,) {
+  // setupでpropsを扱う場合は引数で渡す
+  setup(props) {
+    // 使用するモジュールを準備
     const { ref, watch, nextTick } = Vue;
+    // DOMを触る時もref()
     const navDialog = ref(null);
 
+    // watch(監視対象,コールバック関数);
+    // 監視対象がpropsの場合はgetter関数にする
+    // refの場合はそのまま置ける
     watch(() => props.isNavOpen, (val) => {
       nextTick(() => {
         const dialog = navDialog.value;
         if (!dialog) return;
         val ? dialog.showModal() : dialog.close();
       });
-
     });
 
+    // テンプレートで使うものはreturnする
     return {
       navDialog
     }
@@ -42,7 +49,7 @@ const SiteHeader = {
             <nav>
               <ul>
                 <!-- ディレクティブやマスタッシュはVue2と同じ -->
-                <li v-for="link in pages" :key="link.name"><a :href="link.path">{{link.name}}</a></li>
+                <li v-for="link in pages" :key="link.name"><a :href="link.path" @click="$emit('update:isNavOpen',false)">{{link.name}}</a></li>
               </ul>
             </nav>
           </div>
