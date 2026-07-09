@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>drawer menu by dialog element</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@4.0.1/destyle.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- Vue3 Global Build -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <header>
+      <div class="header-inner container">
+        <h1 class="logo">LOGO</h1>
+        <dialog id="nav-dialog" class="drawer-menu" ref="nav-dialog" @close="isNavOpen = false">
+          <div class="drawer-menu__content container">
+            <header class="drawer-menu__header">
+              <button class="drawer-menu__btn-close" type="button" aria-label="閉じる" aria-controls="nav-dialog"
+                @click="isNavOpen=false">
+                <span class="btn-close__line"></span>
+              </button>
+            </header>
+            <nav>
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </dialog>
+        <button type="button" class="ham-btn" aria-label="メニュー開閉" aria-controls="nav-dialog"
+          @click="isNavOpen = !isNavOpen">
+          <span class="ham-btn__line"></span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <h2 class="section-heading">drawer menu by dialog element</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo adipisci maiores accusamus culpa, similique
+            veritatis accusantium. Odio rerum, eligendi quas nam, laboriosam voluptatem corporis corrupti ad
+            necessitatibus
+            animi quo odit.</p>
+        </div>
+      </section>
+
+    </main>
+    <footer>
+      <div class="footer-inner container">
+        <small>&copy; 2026 Drawer Menu</small>
+      </div>
+    </footer>
+  </div>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>
